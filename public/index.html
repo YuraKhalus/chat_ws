@@ -1,33 +1,26 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BETA v0.1 Чат на WebSocket</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>BETA v0.1 Чат на WebSocket</title>
-   <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-   <div class="wrap">
+  <body>
+    <div class="wrap">
       <h1>Чат</h1>
       <div class="chat_container">
-         <ul id="messages">
-
-         </ul>
-         <form id="form">
-            <input type="text" id="input" autocomplete="off">
-            <button>Відправити</button>
-         </form>
+        <h1>TEst for git</h1>
+        <ul id="messages"></ul>
+        <form id="form">
+          <input type="text" id="input" autocomplete="off" />
+          <button>Відправити</button>
+        </form>
       </div>
-   </div>
+    </div>
 
-
-
-
-   <script type="module" src="/socket.io/socket.io.js"></script>
-   <script type="module" src="./index.js"> </script>
-
-</body>
-
+    <script type="module" src="/socket.io/socket.io.js"></script>
+    <script type="module" src="./index.js"></script>
+  </body>
 </html>
