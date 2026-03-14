@@ -2,17 +2,12 @@ const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
 const dotenv = require('dotenv');
-dotenv.config();
-const mongoose = require('mongoose');
+const connectDB = require('./config/db');
 
-mongoose.connect(process.env.MONGODB_URL, {
-   useNewUrlParser: true,
-   useUnifiedTopology: true,
-}).then(() => {
-   console.log("Database connected");
-}).catch((err) => {
-   console.log(err);
-})
+dotenv.config();
+
+// Підключення до бази даних
+connectDB();
 
 
 const app = express();
