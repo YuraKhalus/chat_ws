@@ -1,0 +1,11 @@
+.avatar_icon {
+  height: 30px;
+  border-radius: 50%;
+}
+
+.header_blocks {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  text-align: center;
+}
