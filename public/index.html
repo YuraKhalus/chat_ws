@@ -11,9 +11,9 @@
 <body>
    <div class="wrap">
       <div class="chat_container">
-         <div class="main__container">
-            <p class="data">8/20/2020</p>
-            <div class="message_box my_message">
+         <ul class="main__container">
+            <!-- <p class="data">8/20/2020</p> -->
+            <!-- <div class="message_box my_message">
                <img src="./img/icon/__avatar_url.svg" alt="">
                <div class="box_text">
                   <p class="name">Jav</p>
@@ -36,12 +36,15 @@
                      <p class="text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo nulla, deleniti nihil dolore iste cum pariatur quam. Voluptatum, omnis </p>
                      <p class="time">11:35 AM</p>
                   </div>
-               </div>
-         </div>
+            </div> -->
+
+         </ul>
+         <input type="text" id="text">
+         <button id="button">send</button>
       </div>
    </div>
 
-
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.11.0/axios.min.js"></script>
    <script type="module" src="/socket.io/socket.io.js"></script>
    <script type="module" src="./index.js"> </script>
 

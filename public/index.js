@@ -1,44 +1,47 @@
-// const socket = io();
-// const userName = prompt('Введіть ваше ім\'я для чату:') || 'Анонім';
-
-// const form = document.querySelector('#form');
-// const input = document.querySelector('#input');
-// const messages = document.querySelector('#messages');
-
-// form.addEventListener('submit', (e) => {
-//     e.preventDefault();
-//     if (input.value) {
-//         socket.emit('chat message', {
-//             user: userName,
-//             message: input.value
-//         });
-//         input.value = '';
-//     }
-// })
-
-// socket.on('chat message', (msg) => {
-//     const item = document.createElement('li');
-//     item.innerHTML = `<strong>${msg.user}: </strong>${msg.message}`;
-//     messages.appendChild(item);
-//     window.scrollTo(0, document.body.scrollHeight);
-// })
-
-
-
-const message_box = document.querySelectorAll('.message_box');
-message_box.forEach((message, i) => {
-    if (i !== message_box.length - 1) {
-        const nextMessage = message.nextElementSibling.classList.contains('my_message')
-        const classMessage = message.classList.contains('my_message')
-        if (classMessage && nextMessage) {
-            message.style.marginBottom = '6px' 
-        } else if(!classMessage && nextMessage) {
-            message.style.marginBottom = '20px' 
-        } else if(classMessage && !nextMessage) {
-            message.style.marginBottom = '16px' 
-        }
-    }
-    if (message.querySelector('.box_text .text').textContent.split(' ').length > 10) {
-        message.querySelector('img').style.alignSelf = 'start'
-    }
+const socket = io();
+const userData = {
+    id: Math.floor(Math.random() * 100),
+    username: prompt('Введіть ваше ім\'я для чату:'),
+}
+const button = document.querySelector('#button');
+button.addEventListener('click', () => {
+    // if (input.value) {
+        socket.emit('chat message', {
+            ...userData,
+            data: new Date().toLocaleString('en-US', { 
+                hour: 'numeric', 
+                minute: 'numeric', 
+                hour12: true 
+            }),
+            message: document.querySelector('#text').value
+        });
+        document.querySelector('#text').value = ''
+    // }
 })
+
+socket.on('chat message', (msg) => {
+    const li = document.createElement('li')
+    li.classList.add('message_box')
+    li.setAttribute('data-id', msg.id)
+    li.innerHTML = `
+        <img src="./img/icon/__avatar_url.svg" alt="">
+        <div class="box_text">
+            <p class="name">${msg.username}</p>
+            <p class="text">${msg.message}</p>
+            <p class="time">${msg.data}</p>
+        </div>
+    `
+    document.querySelector('.main__container').appendChild(li);
+    addClass()
+})
+
+
+
+function addClass() {
+    const dataAttribute = document.querySelectorAll('[data-id]');
+    dataAttribute.forEach(att => {
+        if (+att.getAttribute('data-id') == userData.id) {
+            att.classList.add('my_message')
+        }
+    })
+}
