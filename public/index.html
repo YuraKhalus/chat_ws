@@ -24,7 +24,7 @@
               <h4 class="chat_name">📋Назва чату</h4>
               <p class="chat_activeUsers">
                 Активних юзерів:
-                <span class="chat_activeUsers_number">###</span>
+                <span class="chat_activeUsers_number">0</span>
               </p>
             </div>
             <div class="header_dots">
@@ -32,6 +32,9 @@
             </div>
           </div>
         </header>
+
+        <div class="modal"></div>
+
         <!-- ---------- -->
         <ul id="messages"></ul>
         <form id="form">
@@ -43,5 +46,6 @@
 
     <script type="module" src="/socket.io/socket.io.js"></script>
     <script type="module" src="./index.js"></script>
+    <script type="module" src="./header.js"></script>
   </body>
 </html>

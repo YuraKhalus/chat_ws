@@ -1,25 +1,33 @@
-const express = require('express');
-const http = require('http');
-const { Server } = require('socket.io');
+const express = require("express");
+const http = require("http");
+const { Server } = require("socket.io");
 
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-app.use(express.static('public'));
+app.use(express.static("public"));
 
-io.on('connection', (socket) => {
-   console.log("Користувач під'єднався");
+let activeUsers = 0; //роблю змінну для активних юзерів
 
-   socket.on('chat message', (msg) => {
-      io.emit('chat message', msg);
-   })
+io.on("connection", (socket) => {
+  activeUsers++; // збільшую при конекті
+  io.emit("chat connection", activeUsers); //роблю еміт
 
-   socket.on('disconnect', () => {
-      console.log("Користувач від'єднався");
-   })
-})
+  console.log("Користувач під'єднався");
+
+  socket.on("chat message", (msg) => {
+    io.emit("chat message", msg);
+  });
+
+  socket.on("disconnect", () => {
+    console.log("Користувач від'єднався");
+
+    activeUsers--; // зменшую при дисконекті
+    io.emit("chat connection", activeUsers); //роблю еміт
+  });
+});
 
 server.listen(3000, () => {
-   console.log("Sever is running on localhost:3000");
-})
+  console.log("Sever is running on localhost:3000");
+});
