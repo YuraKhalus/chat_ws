@@ -1,26 +1,50 @@
 const socket = io();
-const userName = prompt("Введіть ваше ім'я для чату:") || "Анонім";
+const userData = {
+    id: Math.floor(Math.random() * 1000),
+    username: prompt('Введіть ім\'я') || 'Анонім',
+}
+const form = document.querySelector('#form');
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    const text = new FormData(form).get('text')
+    if (text) {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        socket.emit('chat message', {
+            ...userData,
+            data: hours + ':' + minutes,
+            message: text
+        });
+        form.reset()
+    }
+})
 
-const form = document.querySelector("#form");
-const input = document.querySelector("#input");
-const messages = document.querySelector("#messages");
+socket.on('chat message', (msg) => {
+    const li = document.createElement('li')
+    li.classList.add('message_box')
+    li.setAttribute('data-id', msg.id)
+    li.innerHTML = `
+        <img src="./img/man.jpg" alt="" style="align-self: ${msg.message.split(' ').length > 10 ? 'start' : 'center'};">
+        <div class="box_text">
+            <p class="name">${msg.username}</p>
+            <p class="text">${msg.message}</p>
+            <p class="time">${msg.data}</p>
+        </div>
+    `
+    document.querySelector('.main__container').appendChild(li);
+    addClass()
+})
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  if (input.value) {
-    socket.emit("chat message", {
-      user: userName,
-      message: input.value,
-    });
-    input.value = "";
-  }
-});
 
-socket.on("chat message", (msg) => {
-  const item = document.createElement("li");
-  item.innerHTML = `<strong>${msg.user}: </strong>${msg.message}`;
-  messages.appendChild(item);
-  window.scrollTo(0, document.body.scrollHeight);
-});
+
+function addClass() {
+    const dataAttribute = document.querySelectorAll('[data-id]');
+    dataAttribute.forEach(att => {
+        if (+att.getAttribute('data-id') == userData.id) {
+            att.classList.add('my_message')
+        }
+    })
+}
 
 export default socket;

@@ -6,7 +6,9 @@
     <title>BETA v0.1 Чат на WebSocket</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="styles/header.css" />
+    <link rel="stylesheet" href="style/main.css">
   </head>
+
 
   <body>
     <div class="wrap">
@@ -32,13 +34,18 @@
           </div>
         </header>
 
+
+        <!-- Chat messages -->
+        <ul class="main__container">
+            <!-- <p class="data">8/20/2020</p> -->
+        </ul>
+
         
 
         <!-- test form -->
-        <ul id="messages"></ul>
         <form id="form">
-          <input type="text" id="input" autocomplete="off" />
-          <button>Відправити</button>
+            <input type="text" name="text" id="input" autocomplete="off" />
+            <button>Відправити</button>
         </form>
 
       <div class="top-line"></div>
@@ -98,3 +105,5 @@
     <script type="module" src="./header.js"></script>
   </body>
 </html>
+
+
