@@ -1,33 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BETA v0.1 Чат на WebSocket</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles/modal.css" />
+  </head>
 
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>BETA v0.1 Чат на WebSocket</title>
-   <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-   <div class="wrap">
+  <body>
+    <div class="wrap">
       <h1>Чат</h1>
       <div class="chat_container">
-         <ul id="messages">
-
-         </ul>
-         <form id="form">
-            <input type="text" id="input" autocomplete="off">
-            <button>Відправити</button>
-         </form>
+        <ul id="messages"></ul>
+        <form id="form">
+          <input type="text" id="input" autocomplete="off" />
+          <button>Відправити</button>
+        </form>
       </div>
-   </div>
 
+      <div class="modal active" id="modal">
+        <!-- тут є клас active, він відповідає за показ вікна, треба добавити логіку що до його присвоєня модальному вікну щоб воно показалось-->
 
+        <div class="modal_container">
+          <span class="modal_close" id="closeModal">&times;</span>
+          <!-- тут є клас &times; то хрестик, він відповідає за закриття вікна, треба добавити логіку що до його присвоєня модальному вікну щоб воно закривалось-->
 
+          <div class="modal_header">
+            <h2 class="modal_title">Modal Title</h2>
+            <p class="modal_text">some small text</p>
+          </div>
 
-   <script type="module" src="/socket.io/socket.io.js"></script>
-   <script type="module" src="./index.js"> </script>
+          <div class="modal_content">
+            <h1>Your content!!!</h1>
+            <h1>Your content!!!</h1>
+            <h1>Your content!!!</h1>
+            <h1>Your content!!!</h1>
+            <h1>Your content!!!</h1>
+            <h1>Your content!!!</h1>
+            <h1>Your content!!!</h1>
+            <h1>Your content!!!</h1>
+            <h1>Your content!!!</h1>
+          </div>
+        </div>
+      </div>
+    </div>
 
-</body>
-
+    <script type="module" src="/socket.io/socket.io.js"></script>
+    <script type="module" src="./index.js"></script>
+  </body>
 </html>
