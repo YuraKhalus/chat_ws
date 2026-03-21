@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+.chat_header {
+  background-color: white;
+  color: black;
+  padding: 17px 24px 15px 13px;
+  font-family: "Roboto";
+}
+
+.header_blocks {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+}
+
+.header_imgs {
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+}
+
+.avatar_icon {
+  border: 2px white solid;
+  height: 24px;
+  margin-left: -6px;
+  border-radius: 50%;
+}
+
+.avatar_icon:nth-child(1) {
+  margin-left: 0px;
+}
+
+.header_title {
+}
+
+.chat_name {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 4px;
+}
+
+.chat_activeUsers {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  color: #666668;
+}

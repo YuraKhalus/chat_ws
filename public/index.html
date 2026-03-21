@@ -1,5 +1,6 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -40,4 +41,54 @@
   <script type="module" src="./index.js"></script>
 
 </body>
+=======
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BETA v0.1 Чат на WebSocket</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles/header.css" />
+  </head>
+
+  <body>
+    <div class="wrap">
+      <h1>Чат</h1>
+      <div class="chat_container">
+        <!-- ---------- -->
+        <header class="chat_header">
+          <div class="header_blocks">
+            <div class="header_imgs">
+              <img class="avatar_icon" src="./img/man.jpg" alt="" />
+              <img class="avatar_icon" src="./img/man.jpg" alt="" />
+              <img class="avatar_icon" src="./img/man.jpg" alt="" />
+            </div>
+            <div class="header_title">
+              <h4 class="chat_name">📋Назва чату</h4>
+              <p class="chat_activeUsers">
+                Активних юзерів:
+                <span class="chat_activeUsers_number">0</span>
+              </p>
+            </div>
+            <div class="header_dots">
+              <img src="./img/dots.png" alt="" />
+            </div>
+          </div>
+        </header>
+
+        <div class="modal"></div>
+
+        <!-- ---------- -->
+        <ul id="messages"></ul>
+        <form id="form">
+          <input type="text" id="input" autocomplete="off" />
+          <button>Відправити</button>
+        </form>
+      </div>
+    </div>
+
+    <script type="module" src="/socket.io/socket.io.js"></script>
+    <script type="module" src="./index.js"></script>
+    <script type="module" src="./header.js"></script>
+  </body>
+
 </html>
