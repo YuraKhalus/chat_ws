@@ -1,7 +1,7 @@
 const socket = io();
 const userData = {
     id: Math.floor(Math.random() * 1000),
-    username: prompt('Введіть ім\'я') || 'Анонім',
+    // username: prompt('Введіть ім\'я') || 'Анонім',
 }
 const form = document.querySelector('#form');
 form.addEventListener('submit', (e) => {
