@@ -6,13 +6,17 @@ const messages = document.querySelector("#messages");
 socket.on("chat connection", ({ activeUsers_num, userName }) => {
   activeUsers.textContent = activeUsers_num;
   messages.innerHTML += `
-    <li class="addedUser">${userName} приєднався до чату</li>
+          <li class="addedUser">
+    <span class="addedUser_msg"><strong>${userName}</strong> приєднався до чату</span>
+  </li>
   `;
 });
 
 socket.on("chat disconnection", ({ activeUsers_num, userName }) => {
   activeUsers.textContent = activeUsers_num;
   messages.innerHTML += `
-    <li class="addedUser">${userName} покинув чат</li>
+      <li class="addedUser">
+    <span class="addedUser_msg"><strong>${userName}</strong> покинув чат</span>
+  </li>
   `;
 });
