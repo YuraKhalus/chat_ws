@@ -49,3 +49,20 @@
   line-height: 100%;
   color: #666668;
 }
+
+#messages .addedUser {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+#messages .addedUser_msg {
+  background-color: rgb(232, 232, 232);
+  color: #666668;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 13px;
+  font-family: "Roboto", sans-serif;
+  backdrop-filter: blur(4px);
+  display: inline-block;
+}

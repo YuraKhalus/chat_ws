@@ -3,6 +3,7 @@ const userData = {
     id: Math.floor(Math.random() * 1000),
     username: prompt('Введіть ім\'я') || 'Анонім',
 }
+socket.emit("user joined", userData.username);
 const form = document.querySelector('#form');
 form.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -33,6 +34,7 @@ socket.on('chat message', (msg) => {
         </div>
     `
     document.querySelector('.main__container').appendChild(li);
+    window.scrollTo(0, document.body.scrollHeight);
     addClass()
 })
 
