@@ -1,6 +1,8 @@
 const socket = io();
 const userName = prompt("Введіть ваше ім'я для чату:") || "Анонім";
 
+socket.emit("user joined", userName);
+
 const form = document.querySelector("#form");
 const input = document.querySelector("#input");
 const messages = document.querySelector("#messages");
