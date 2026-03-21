@@ -24,7 +24,9 @@ app.use('/api/auth', authRoutes);
 io.on('connection', (socket) => {
   console.log("Користувач під'єднався");
 
-  socket.on('chat message', (msg) => {
+  socket.on('chat message', (msg, userID) => {
+    console.log("Повідомлення:", msg);
+
     io.emit('chat message', msg);
   });
 
