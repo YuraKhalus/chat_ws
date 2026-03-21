@@ -6,6 +6,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>BETA v0.1 Чат на WebSocket</title>
    <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="style/main.css">
 </head>
 
 <body>
@@ -13,41 +14,16 @@
       <div class="chat_container">
          <ul class="main__container">
             <!-- <p class="data">8/20/2020</p> -->
-            <!-- <div class="message_box my_message">
-               <img src="./img/icon/__avatar_url.svg" alt="">
-               <div class="box_text">
-                  <p class="name">Jav</p>
-                  <p class="text">I’m down! Any ideas?? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa illo veniam fugiat odit quaerat qui eveniet corporis deleniti beatae! Error dolore adipisci velit mollitia perspiciatis corrupti vero laudantium corporis beatae.</p>
-                  <p class="time">11:35 AM</p>
-               </div>
-            </div>
-            <div class="message_box">
-               <img src="./img/icon/__avatar_url.svg" alt="">
-               <div class="box_text">
-                  <p class="name">Jav</p>
-                  <p class="text">I’m down! Any ideas??</p>
-                  <p class="time">11:35 AM</p>
-               </div>
-            </div>
-            <div class="message_box">
-                  <img src="./img/icon/__avatar_url.svg" alt="">
-                  <div class="box_text">
-                     <p class="name">Jav</p>
-                     <p class="text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo nulla, deleniti nihil dolore iste cum pariatur quam. Voluptatum, omnis </p>
-                     <p class="time">11:35 AM</p>
-                  </div>
-            </div> -->
-
          </ul>
-         <input type="text" id="text">
-         <button id="button">send</button>
+         <form id="form">
+            <input type="text" name="text" id="input" autocomplete="off" />
+            <button>Відправити</button>
+        </form>
       </div>
    </div>
 
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.11.0/axios.min.js"></script>
    <script type="module" src="/socket.io/socket.io.js"></script>
    <script type="module" src="./index.js"> </script>
-
 </body>
 
 </html>

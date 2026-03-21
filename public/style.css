@@ -1,126 +1,18 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     color: black;
 }
-
+body{
+    font-family: 'Roboto';
+}
 .wrap {
     width: 100%;
     height: 100vh;
     /* background-color: #333; */
     color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     
-}
-.main__container{
-    display: flex;
-    /* justify-content: center; */
-    align-items: center;
-    flex-direction: column;
-    width: 700px;
-    border: 1px solid #7e7e7e;
-    height: 90vh;
-    padding: 5px 16px;
-    overflow: auto;
-}
-.message_box{
-    display: flex;
-    align-items: center;
-    align-self: self-start;
-    margin-bottom: 12px;
-    max-width: 300px;
-}
-.box_text{
-    background-color: #F2F2F7;
-    border-radius: 4px;
-    padding: 4px 8px;
-    position: relative;
-    
-}
-/* .box_text::before{
-    content: "";
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    left: -12px;
-    top: 10px;
-    background-color: aqua;
-    border-radius: 100% 0% 0% 100% / 0% 100% 0% 100% ;
-    background-color: #F2F2F7;
-    border-width: 8px 12px 8px 0;
-    border-style: solid;
-    border-color: #2929c2;
-} */
-.message_box img{
-    margin-right: 25px;
-}
-.name, .text {
-    color: #2c2c2e;
-    
-    line-height: 18px;
-    margin-bottom: 4px;
-}
-.name{
-    font-weight: 600;
-}
-.time {
-    color: #666668;
-    font-size: 12px;
-    font-weight: 300;
-    text-align: right;
-}
-
-
-.data{
-    color: #666668;
-    font-size: 12px;
-    font-weight: 400;
-    align-self: center;
-    margin-bottom: 20px;
-}
-.my_message{
-    align-self: self-end;
-}
-.my_message .box_text{
-    background-color: #007AFF;
-    padding-top: 8px;
-}
-.my_message .text, .my_message .time{
-    color: #fff;
-}
-.my_message .name {
-    display: none;
-}
-.my_message img{
-    display: none;
-}
-@media screen and (max-width: 768px) {
-    .main__container{
-        width: 590px;
-    }
-    .message_box{
-        max-width: 250px;
-    }
-}
-@media screen and (max-width: 600px) {
-    .main__container, .wrap, .chat_container{
-        width: 100%;
-    } 
-    .main__container{
-        border: none;
-    }
-}
-
-@media screen and (max-width: 540px) {
-    .message_box {
-        max-width: 200px;
-    }
-}
-@media screen and (max-width: 425px) {
-    .main__container{
-        padding: 5px 5px;
-    }
 }

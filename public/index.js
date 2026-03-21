@@ -1,22 +1,23 @@
 const socket = io();
 const userData = {
-    id: Math.floor(Math.random() * 100),
-    username: prompt('Введіть ваше ім\'я для чату:'),
+    id: Math.floor(Math.random() * 1000),
+    username: prompt('Введіть ім\'я') || 'Анонім',
 }
-const button = document.querySelector('#button');
-button.addEventListener('click', () => {
-    // if (input.value) {
+const form = document.querySelector('#form');
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    const text = new FormData(form).get('text')
+    if (text) {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
         socket.emit('chat message', {
             ...userData,
-            data: new Date().toLocaleString('en-US', { 
-                hour: 'numeric', 
-                minute: 'numeric', 
-                hour12: true 
-            }),
-            message: document.querySelector('#text').value
+            data: hours + ':' + minutes,
+            message: text
         });
-        document.querySelector('#text').value = ''
-    // }
+        form.reset()
+    }
 })
 
 socket.on('chat message', (msg) => {
@@ -24,7 +25,7 @@ socket.on('chat message', (msg) => {
     li.classList.add('message_box')
     li.setAttribute('data-id', msg.id)
     li.innerHTML = `
-        <img src="./img/icon/__avatar_url.svg" alt="">
+        <img src="./img/man.jpg" alt="" style="align-self: ${msg.message.split(' ').length > 10 ? 'start' : 'center'};">
         <div class="box_text">
             <p class="name">${msg.username}</p>
             <p class="text">${msg.message}</p>
