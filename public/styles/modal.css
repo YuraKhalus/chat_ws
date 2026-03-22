@@ -193,3 +193,13 @@
   border-radius: 50%;
   padding: 6px;
 }
+
+.modal_text strong {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.modal_text strong:hover {
+  color: #b55ac7;
+  transition: ease 0.3s;
+}

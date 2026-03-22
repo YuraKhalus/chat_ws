@@ -97,7 +97,7 @@
          </div>
       </div>
 
-     <div class="modal active" id="modal"> <!--active-->
+     <div class="modal active registration" id="modal"> <!--active-->
         <!-- тут є клас active, він відповідає за показ вікна, треба добавити логіку що до його присвоєня модальному вікну щоб воно показалось-->
 
         <div class="modal_container">
@@ -106,7 +106,7 @@
 
           <div class="modal_header">
             <h2 class="modal_title">Registretion</h2>
-            <p class="modal_text">Whant to <strong>Login?</strong></p>
+            <p class="modal_text">Want to <strong class="switch_button_login">Login?</strong></p>
           </div>
 
 <div class="modal_content">
@@ -147,6 +147,45 @@
 </div>
         </div>
       </div>
+
+      <div class="modal login" id="modal"> <!--active-->
+        <!-- тут є клас active, він відповідає за показ вікна, треба добавити логіку що до його присвоєня модальному вікну щоб воно показалось-->
+
+        <div class="modal_container">
+          <!-- <span class="modal_close" id="closeModal">&times;</span> -->
+          <!-- тут є клас &times; то хрестик, він відповідає за закриття вікна, треба добавити логіку що до його присвоєня модальному вікну щоб воно закривалось-->
+
+          <div class="modal_header">
+            <h2 class="modal_title">Login</h2>
+            <p class="modal_text">Want to <strong class="switch_button_registration">Registrate?</strong></p>
+          </div>
+
+<div class="modal_content">
+  <form id="userForm">
+
+
+
+    <div class="modal_inputs">
+
+      <div class="input_group">
+        <label for="username">Username</label>
+        <input id="username" class="userNameInput" type="text" placeholder="Enter your name" required/>
+      </div>
+
+      <div class="input_group">
+        <label for="password">Password</label>
+        <input id="password" type="password" placeholder="Enter password" required/>
+      </div>
+
+    </div>
+<button class="submit" type="submit">Login</button>
+  </form>
+
+  
+</div>
+        </div>
+      </div>
+
     </div>
 
     <script type="module" src="/socket.io/socket.io.js"></script>

@@ -7,16 +7,22 @@ const userData = {
 //-----------------------------
 
 const modal = document.querySelector(".modal");
+const modal_login = document.querySelector(".login");
 const userForm = document.querySelector("#userForm");
+const userForm_login = document.querySelector(".login #userForm");
 const userNameInput = document.querySelector(".userNameInput");
+const userNameInput_login = document.querySelector(".login .userNameInput");
 
 const userImgInput = document.querySelector("#fileInput");
 const avatar_img = document.querySelector(".avatar_img_show");
+
+document.body.style.overflow = "hidden";
 
 userForm.addEventListener("submit", (e) => {
   e.preventDefault();
   userData.username = userNameInput.value ? userNameInput.value : "Aнонім"; //тут юзернейм заповнюю
   socket.emit("user joined", userData.username);
+  document.body.style.overflow = "";
   modal.classList.remove("active");
 });
 
@@ -28,6 +34,32 @@ userImgInput.addEventListener("change", (e) => {
     avatar_img.src = src;
   }
 });
+
+const login_modal = document.querySelector(".login");
+const registration_modal = document.querySelector(".registration");
+const switch_button_registration = document.querySelector(
+  ".switch_button_registration",
+);
+const switch_button_login = document.querySelector(".switch_button_login");
+
+userForm_login.addEventListener("submit", (e) => {
+  e.preventDefault();
+  userData.username = userNameInput_login.value
+    ? userNameInput_login.value
+    : "Aнонім"; //тут юзернейм заповнюю
+  socket.emit("user joined", userData.username);
+  document.body.style.overflow = "";
+  modal_login.classList.remove("active");
+});
+
+function switch_modal(e) {
+  e.preventDefault();
+  login_modal.classList.toggle("active");
+  registration_modal.classList.toggle("active");
+}
+
+switch_button_registration.addEventListener("click", (e) => switch_modal(e));
+switch_button_login.addEventListener("click", (e) => switch_modal(e));
 
 //-----------------------------
 
