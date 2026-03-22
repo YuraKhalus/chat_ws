@@ -50,13 +50,13 @@
   color: #666668;
 }
 
-#messages .addedUser {
+.addedUser {
   display: flex;
   justify-content: center;
   margin: 10px 0;
 }
 
-#messages .addedUser_msg {
+.addedUser_msg {
   background-color: rgb(232, 232, 232);
   color: #666668;
   padding: 4px 12px;
