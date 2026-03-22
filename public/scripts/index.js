@@ -1,7 +1,7 @@
 const socket = io();
 const userData = {
   id: Math.floor(Math.random() * 1000),
-  // username: prompt("Введіть ім'я") || "Анонім",
+  username: "", //зробив пустим юзернейм
 };
 
 //-----------------------------
@@ -10,11 +10,23 @@ const modal = document.querySelector(".modal");
 const submit = document.querySelector(".submit");
 const userNameInput = document.querySelector(".userNameInput");
 
+const userImgInput = document.querySelector("#fileInput");
+const avatar_img = document.querySelector(".avatar_img_show");
+
 submit.addEventListener("click", () => {
   console.log("fwofiwgwo");
-  userData.username = userNameInput.value;
+  userData.username = userNameInput.value ? userNameInput.value : "Aнонім"; //тут юзернейм заповнюю
   socket.emit("user joined", userData.username);
   modal.classList.remove("active");
+});
+
+userImgInput.addEventListener("change", (e) => {
+  const currFiles = e.target.files;
+
+  if (currFiles.length > 0) {
+    let src = URL.createObjectURL(currFiles[0]);
+    avatar_img.src = src;
+  }
 });
 
 //-----------------------------
