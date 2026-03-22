@@ -156,7 +156,8 @@
 
 /* --- BUTTON --- */
 .submit {
-  margin-top: 5px;
+  width: 100%;
+  margin-top: 15px;
   padding: 11px;
   border-radius: 10px;
   border: none;

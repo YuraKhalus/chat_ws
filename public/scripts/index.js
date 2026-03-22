@@ -7,14 +7,14 @@ const userData = {
 //-----------------------------
 
 const modal = document.querySelector(".modal");
-const submit = document.querySelector(".submit");
+const userForm = document.querySelector("#userForm");
 const userNameInput = document.querySelector(".userNameInput");
 
 const userImgInput = document.querySelector("#fileInput");
 const avatar_img = document.querySelector(".avatar_img_show");
 
-submit.addEventListener("click", () => {
-  console.log("fwofiwgwo");
+userForm.addEventListener("submit", (e) => {
+  e.preventDefault();
   userData.username = userNameInput.value ? userNameInput.value : "Aнонім"; //тут юзернейм заповнюю
   socket.emit("user joined", userData.username);
   modal.classList.remove("active");
