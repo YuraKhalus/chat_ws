@@ -105,31 +105,46 @@
           <!-- тут є клас &times; то хрестик, він відповідає за закриття вікна, треба добавити логіку що до його присвоєня модальному вікну щоб воно закривалось-->
 
           <div class="modal_header">
-            <h2 class="modal_title">Modal Title</h2>
-            <p class="modal_text">some small text</p>
+            <h2 class="modal_title">Registretion</h2>
+            <p class="modal_text">Whant to <strong>Login?</strong></p>
           </div>
 
-          <div class="modal_content">
-            <form id="userForm">
+<div class="modal_content">
+  <form id="userForm">
 
-              <div class="avatar">
-                <div class="avatar_img">
+    <div class="avatar">
+      <div class="avatar_img_container">
+        <div class="avatar_img">
+        <input type="file" id="fileInput" style="display:none;" accept="image/*">
+        <label for="fileInput">
+          <img class="avatar_img_show" src="./img/man.jpg" alt="">
+        </label>
+        
+      </div>
+      <img class="pen" src="./img/pen.png" alt="">
+      </div>
+      
+      
+    </div>
 
-                  <input type="file" id="fileInput" style="display:none;" accept="image/*">
-                
-                  <label for="fileInput">
-                    <img class="avatar_img_show" src="./img/man.jpg" alt="">
-                  </label>
-                </div>
+    <div class="modal_inputs">
 
-                
-                
-              </div>
+      <div class="input_group">
+        <label for="username">Username</label>
+        <input id="username" class="userNameInput" type="text" placeholder="Enter your name" />
+      </div>
 
-              <input class="userNameInput" type="text" />
-            </form>
-            <button class="submit">Start chatting!</button>
-          </div>
+      <div class="input_group">
+        <label for="password">Password</label>
+        <input id="password" type="password" placeholder="Enter password" />
+      </div>
+
+    </div>
+
+  </form>
+
+  <button class="submit">Start chatting!</button>
+</div>
         </div>
       </div>
     </div>
