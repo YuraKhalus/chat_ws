@@ -67,6 +67,23 @@
   border-top: 1px solid #eee;
 }
 
+.modal_background{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+.modal_background div{
+  width: 80px;
+  height: 80px;
+  /* background-color: red; */
+  box-shadow: 0px 0px 17px -2px rgba(0,0,0,0.75);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+
 /* кнопка закриття */
 .modal_close {
   position: absolute;
@@ -80,4 +97,29 @@
 
 .modal_close:hover {
   color: #000;
+}
+
+
+/* Фони */
+    
+    FF9C9D
+    FFD19C
+    FFFC9C
+.background1{
+    background-color: #fff;
+}
+.background2{
+    background: linear-gradient(140deg,#fff 0%,#A3E7EF 50%, #fff 100%);
+}
+.background3{
+    background: linear-gradient(140deg,#fff 0%,#FF9C9D 50%, #fff 100%);
+}
+.background4{
+    background: linear-gradient(140deg,#fff 0%,#FFD19C 50%, #fff 100%);  
+}
+.background5{
+    background: linear-gradient(140deg,#fff 0%,#FFFC9C 50%, #fff 100%);  
+}
+.background6{
+    background: linear-gradient(140deg,#fff 0%,#C0EFA3 50%, #fff 100%); 
 }
