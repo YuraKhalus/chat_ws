@@ -4,6 +4,8 @@ const socket = io();
 const userData = {
     id: Math.floor(Math.random() * 1000),
     username: "", //зробив пустим юзернейм
+    password: "", // добавив пароль
+    avatar: "", // добавив фото
 };
 
 //-----------------------------
@@ -20,21 +22,30 @@ const avatar_img = document.querySelector(".avatar_img_show");
 
 document.body.style.overflow = "hidden";
 
-userForm.addEventListener("submit", (e) => {
+userForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     userData.username = userNameInput.value ? userNameInput.value : "Aнонім"; //тут юзернейм заповнюю
     socket.emit("user joined", userData.username);
     document.body.style.overflow = "";
     modal.classList.remove("active");
+
+    const user = {
+        id: userData.id,
+        login: userData.login,
+        password: userData.password,
+        avatar: userData.avatar,
+    };
+    const response = await axios.post("/register", user);
+    console.log(response);
 });
 
-userImgInput.addEventListener("change", async (e) => {
+userImgInput.addEventListener("change", (e) => {
     const currFiles = e.target.files;
 
     if (currFiles.length > 0) {
         let src = URL.createObjectURL(currFiles[0]);
         avatar_img.src = src;
-        await convertImg(currFiles[0]);
+        //await convertImg(currFiles[0]);
     }
 });
 
