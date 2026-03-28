@@ -10,7 +10,7 @@ module.exports = (io) => {
       
       socket.login = data.login;
 
-      io.emit("chat connection", { activeUsers_num, login: socket.login });
+      io.emit("chat connection", { activeUsers_num, userName: socket.login });
 
       try {
         const historyDocs = await Chat.find()
@@ -59,7 +59,7 @@ module.exports = (io) => {
     socket.on("disconnect", () => {
       activeUsers_num--;
       console.log("Користувач від'єднався");
-      io.emit("chat disconnection", { activeUsers_num, login: socket.login });
+      io.emit("chat disconnection", { activeUsers_num, userName: socket.login });
     });
   });
 };
