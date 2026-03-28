@@ -2,10 +2,10 @@ const socket = io();
 
 const userData = {
   id: Math.floor(Math.random() * 1000),
-  username: prompt("Введіть ім'я") || "Анонім",
+  userName: prompt("Введіть ім'я") || "Анонім",
 };
 
-socket.emit("user joined", { login: userData.username });
+socket.emit("user joined", { login: userData.userName });
 
 const form = document.querySelector("#form");
 
