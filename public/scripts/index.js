@@ -1,6 +1,7 @@
 // import convertImg from "../utils/convert.js";
 
 const socket = io();
+
 const userData = {
     id: Math.floor(Math.random() * 1000),
     username: "", //зробив пустим юзернейм
@@ -95,21 +96,27 @@ form.addEventListener("submit", (e) => {
 });
 
 socket.on("chat message", (msg) => {
+    renderMessage(msg);
+});
+
+function renderMessage(msg) {
     const li = document.createElement("li");
     li.classList.add("message_box");
-    li.setAttribute("data-id", msg.id);
+    if (msg.id != null) {
+        li.setAttribute("data-id", msg.id);
+    }
     li.innerHTML = `
-        <img src="./img/man.jpg" alt="" style="align-self: ${msg.message.split(" ").length > 10 ? "start" : "center"};">
-        <div class="box_text">
-            <p class="name">${msg.username}</p>
-            <p class="text">${msg.message}</p>
-            <p class="time">${msg.data}</p>
-        </div>
-    `;
+    <img src="./img/man.jpg" alt="" style="align-self: ${msg.message.split(" ").length > 10 ? "start" : "center"};">
+    <div class="box_text">
+      <p class="name">${msg.username}</p>
+      <p class="text">${msg.message}</p>
+      <p class="time">${msg.data}</p>
+    </div>
+  `;
     document.querySelector(".main__container").appendChild(li);
     window.scrollTo(0, document.body.scrollHeight);
     addClass();
-});
+}
 
 function addClass() {
     const dataAttribute = document.querySelectorAll("[data-id]");
