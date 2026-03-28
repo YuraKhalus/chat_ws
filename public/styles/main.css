@@ -6,10 +6,10 @@
     align-items: center;
     flex-direction: column;
     width: 100%;
-    border: 1px solid #7e7e7e;
-    height: 90vh;
+    /* border: 1px solid #7e7e7e; */
+    height: 85vh;
     padding: 5px 16px;
-    overflow: auto;
+    overflow-y: auto;
 }
 .message_box{
     display: flex;
