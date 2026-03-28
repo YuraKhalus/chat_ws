@@ -19,12 +19,6 @@ io.on("connection", (socket) => {
 
     socket.on("chat message", (msg) => {
       io.emit("chat message", msg);
-      // window.scrollTo(0, document.querySelector(".main__container").scrollHeight);
-       document.querySelector(".main__container").scrollTop = document.querySelector(".main__container").scrollHeight;
-      // document.querySelector(".main__container").scrollTop({
-      //    top: document.querySelector(".main__container").scrollHeight,
-      //    behavior: "smooth"
-      // });
     });
 
     socket.on("disconnect", () => {

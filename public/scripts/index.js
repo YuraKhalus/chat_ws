@@ -93,7 +93,8 @@ socket.on("chat message", (msg) => {
         </div>
     `;
   document.querySelector(".main__container").appendChild(li);
-  window.scrollTo(0, document.body.scrollHeight);
+  // document.querySelector(".main__container").scrollTo(0, document.querySelector(".main__container").scrollHeight);
+ document.querySelector(".main__container").scrollTop = document.querySelector(".main__container").scrollHeight;
   addClass();
 });
 
