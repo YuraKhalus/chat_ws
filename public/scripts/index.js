@@ -1,4 +1,4 @@
-// import convertImg from "../utils/convert.js";
+import convertImg from "../utils/convert.js";
 
 const socket = io();
 
@@ -49,13 +49,15 @@ userForm.addEventListener("submit", async (e) => {
     }
 });
 
-userImgInput.addEventListener("change", (e) => {
+userImgInput.addEventListener("change", async (e) => {
     const currFiles = e.target.files;
 
     if (currFiles.length > 0) {
         let src = URL.createObjectURL(currFiles[0]);
         avatar_img.src = src;
-        //await convertImg(currFiles[0]);
+        const base64Img = await convertImg(currFiles[0]);
+        console.log(base64Img);
+        userData.avatar = base64Img;
     }
 });
 
