@@ -4,9 +4,9 @@ const socket = io();
 
 const userData = {
     id: Math.floor(Math.random() * 1000),
-    username: "", //зробив пустим юзернейм
-    password: "", // добавив пароль
-    avatar: "", // добавив фото
+    username: "123", //зробив пустим юзернейм
+    password: `${Math.floor(Math.random() * 1000)}`, // добавив пароль
+    avatar: "123", // добавив фото
 };
 
 //-----------------------------
@@ -26,18 +26,23 @@ document.body.style.overflow = "hidden";
 userForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     userData.username = userNameInput.value ? userNameInput.value : "Aнонім"; //тут юзернейм заповнюю
+
     socket.emit("user joined", userData.username);
     document.body.style.overflow = "";
     modal.classList.remove("active");
 
     const user = {
-        id: userData.id,
-        login: userData.login,
+        //id: userData.id,
+        login: userData.username,
         password: userData.password,
         avatar: userData.avatar,
     };
-    const response = await axios.post("/register", user);
-    console.log(response);
+    try {
+        const response = await axios.post("/api/auth/register", user);
+        console.log(response);
+    } catch (e) {
+        console.log(e);
+    }
 });
 
 userImgInput.addEventListener("change", (e) => {
