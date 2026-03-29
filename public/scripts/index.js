@@ -5,7 +5,7 @@ const socket = io();
 const userData = {
     id: Math.floor(Math.random() * 1000),
     username: "123", //зробив пустим юзернейм
-    password: `${Math.floor(Math.random() * 1000)}`, // добавив пароль
+    password: `123456`, // добавив пароль
     avatar: "123", // добавив фото
 };
 
@@ -14,6 +14,8 @@ const userData = {
 const modal = document.querySelector(".modal");
 const modal_login = document.querySelector(".login");
 const userForm = document.querySelector("#userForm");
+const password = document.querySelector("#password");
+const password_login = document.querySelector(".login #password");
 const userForm_login = document.querySelector(".login #userForm");
 const userNameInput = document.querySelector(".userNameInput");
 const userNameInput_login = document.querySelector(".login .userNameInput");
@@ -26,10 +28,7 @@ document.body.style.overflow = "hidden";
 userForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     userData.username = userNameInput.value ? userNameInput.value : "Aнонім"; //тут юзернейм заповнюю
-
-    socket.emit("user joined", userData.username);
-    document.body.style.overflow = "";
-    modal.classList.remove("active");
+    userData.password = password.value;
 
     const user = {
         //id: userData.id,
@@ -38,9 +37,14 @@ userForm.addEventListener("submit", async (e) => {
         avatar: userData.avatar,
     };
     try {
-        const response = await axios.post("/api/auth/register", user);
+        const response = await axios.post("/api/auth/register", user); // роблю запит
         console.log(response);
+
+        socket.emit("user joined", userData.username);
+        document.body.style.overflow = "";
+        modal.classList.remove("active");
     } catch (e) {
+        alert("Логін зайнятий");
         console.log(e);
     }
 });
@@ -62,14 +66,27 @@ const switch_button_registration = document.querySelector(
 );
 const switch_button_login = document.querySelector(".switch_button_login");
 
-userForm_login.addEventListener("submit", (e) => {
+userForm_login.addEventListener("submit", async (e) => {
     e.preventDefault();
     userData.username = userNameInput_login.value
         ? userNameInput_login.value
         : "Aнонім"; //тут юзернейм заповнюю
-    socket.emit("user joined", userData.username);
-    document.body.style.overflow = "";
-    modal_login.classList.remove("active");
+    userData.password = password_login.value;
+    const user = {
+        //id: userData.id,
+        login: userData.username,
+        password: userData.password,
+    };
+    try {
+        const response = await axios.post("/api/auth/login", user); // роблю запит
+        console.log(response);
+        socket.emit("user joined", userData.username);
+        document.body.style.overflow = "";
+        modal_login.classList.remove("active");
+    } catch (e) {
+        alert("Логін не вдався");
+        console.log(e);
+    }
 });
 
 function switch_modal(e) {
