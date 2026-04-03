@@ -67,14 +67,22 @@
   border-top: 1px solid #eee;
 }
 
-.modal_background{
+
+.modal_backgrounds{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ready_made_backgrounds{
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
   gap: 30px;
 }
-.modal_background div{
+.ready_made_backgrounds div{
   width: 80px;
   height: 80px;
   /* background-color: red; */
@@ -99,27 +107,78 @@
   color: #000;
 }
 
+#success_background{
+  background-color: #00000000;
+  padding: 3px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#success_background:hover{
+  border: #797979 solid 2px;
+  color: #797979;
+}
+
+
+.uploadForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+}
+input[type='file'] {
+  color: transparent;
+}
+.upload{
+  height: 150px;
+  border: #9e9e9e dashed  3px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+}
+.input_file{
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+  position: absolute;
+}
+.upload_img{
+    width: 100px;
+
+}
+
+#delete_background{
+  background-color: red;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+#delete_background:hover{
+  background-color: rgb(190, 61, 61);
+}
 
 /* Фони */
     
-    FF9C9D
-    FFD19C
-    FFFC9C
 .background1{
-    background-color: #fff;
+    background: #fff !important;
 }
 .background2{
-    background: linear-gradient(140deg,#fff 0%,#A3E7EF 50%, #fff 100%);
+    background: linear-gradient(140deg,#fff 0%,#A3E7EF 50%, #fff 100%) !important;
 }
 .background3{
-    background: linear-gradient(140deg,#fff 0%,#FF9C9D 50%, #fff 100%);
+    background: linear-gradient(140deg,#fff 0%,#FF9C9D 50%, #fff 100%) !important;
 }
 .background4{
-    background: linear-gradient(140deg,#fff 0%,#FFD19C 50%, #fff 100%);  
+    background: linear-gradient(140deg,#fff 0%,#FFD19C 50%, #fff 100%) !important;  
 }
 .background5{
-    background: linear-gradient(140deg,#fff 0%,#FFFC9C 50%, #fff 100%);  
+    background: linear-gradient(140deg,#fff 0%,#FFFC9C 50%, #fff 100%) !important;  
 }
 .background6{
-    background: linear-gradient(140deg,#fff 0%,#C0EFA3 50%, #fff 100%); 
+    background: linear-gradient(140deg,#fff 0%,#C0EFA3 50%, #fff 100%) !important; 
 }

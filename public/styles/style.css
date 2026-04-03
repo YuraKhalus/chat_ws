@@ -14,6 +14,9 @@ body{
   /* background-color: #333;
   color: #fff; */
 }
+#form{
+    background-color: #fff;
+}
 .top-line {
     width: 100%;
     height: 1px;
