@@ -119,7 +119,7 @@ modal_backgrounds.addEventListener('click', () => {
         break
       }
       if (type_image.length-1 == i) {
-        alert('syibq nbg afqkf yfls')
+        alert('вибрайте png або jpeg')
         return
       }
     }
@@ -146,7 +146,16 @@ modal_backgrounds.addEventListener('click', () => {
   input_file.addEventListener('change', () => {
     const file = input_file.files[0]
     if (file) {
-      
+      const type_image = ['image/png', 'image/jpeg']
+      for (let i = 0; i < type_image.length; i++) {
+        if (file.type == type_image[i]) {
+          break
+        }
+        if (type_image.length-1 == i) {
+          alert('вибрайте png або jpeg')
+          return
+        }
+      }
       const url = URL.createObjectURL(file)
       document.querySelector('.upload').style.cssText = 'height: max-content; padding: 10px 0'
       upload_img.onload = () => {
