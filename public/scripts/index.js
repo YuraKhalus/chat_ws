@@ -58,6 +58,8 @@ userImgInput.addEventListener("change", async (e) => {
         const base64Img = await convertImg(currFiles[0]);
         console.log(base64Img);
         userData.avatar = base64Img;
+
+        localStorage.setItem("avatar", base64Img);
     }
 });
 
