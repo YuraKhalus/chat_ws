@@ -4,9 +4,9 @@ const socket = io();
 
 const userData = {
     id: Math.floor(Math.random() * 1000),
-    username: "123", //зробив пустим юзернейм
-    password: `123456`, // добавив пароль
-    avatar: "123", // добавив фото
+    username: null, //зробив пустим юзернейм
+    password: null, // добавив пароль
+    avatar: null, // добавив фото
 };
 
 //-----------------------------
