@@ -76,3 +76,6 @@
   backdrop-filter: blur(4px);
   display: inline-block;
 }
+.addedUser:first-child{
+  margin-top: 75px;
+}

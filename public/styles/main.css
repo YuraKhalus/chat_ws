@@ -7,9 +7,11 @@
     flex-direction: column;
     width: 100%;
     /* border: 1px solid #7e7e7e; */
-    height: 85vh;
+    height: 90vh;
     padding: 5px 16px;
     overflow-y: auto;
+    position: absolute;
+    top: 0;
 }
 .message_box{
     display: flex;
