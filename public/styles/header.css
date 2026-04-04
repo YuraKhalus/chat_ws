@@ -5,6 +5,7 @@
   color: black;
   padding: 17px 24px 15px 13px;
   font-family: "Roboto";
+  border-bottom: 1px solid #e5e5e5;
 }
 
 .header_blocks {
