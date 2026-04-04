@@ -75,11 +75,11 @@ userForm_login.addEventListener("submit", async (e) => {
     userData.username = userNameInput_login.value
         ? userNameInput_login.value
         : "Aнонім"; //тут юзернейм заповнюю
-    userData.password = password_login.value;
+    //userData.password = password_login.value;
     const user = {
         //id: userData.id,
         login: userData.username,
-        password: userData.password,
+        password: password_login.value,
     };
     try {
         const response = await axios.post("/api/auth/login", user); // роблю запит
