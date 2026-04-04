@@ -66,6 +66,11 @@ body{
     display: flex;
     gap: 6px;
 }
+.chat-input-box{
+    position: fixed;
+    bottom: 1px;
+    width: 100%;
+}
 
 @media (max-width: 600px) {
     .chat-input {
