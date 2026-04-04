@@ -5,6 +5,10 @@
   color: black;
   padding: 17px 24px 15px 13px;
   font-family: "Roboto";
+<<<<<<< HEAD
+=======
+  border-bottom: 1px solid #e5e5e5;
+>>>>>>> beta-images-converting/Maksym
 }
 
 .header_blocks {
@@ -66,6 +70,7 @@
   backdrop-filter: blur(4px);
   display: inline-block;
 }
+<<<<<<< HEAD
 
 .header_dots{
   position: relative;
@@ -84,3 +89,5 @@
 .header_dots:hover ul{
   display: block;
 }
+=======
+>>>>>>> beta-images-converting/Maksym

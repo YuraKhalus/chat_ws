@@ -6,10 +6,17 @@
     align-items: center;
     flex-direction: column;
     width: 100%;
+<<<<<<< HEAD
     border: 1px solid #E5E5EA;
     height: 90vh;
     padding: 5px 16px;
     overflow: auto;
+=======
+    /* border: 1px solid #7e7e7e; */
+    height: 85vh;
+    padding: 5px 16px;
+    overflow-y: auto;
+>>>>>>> beta-images-converting/Maksym
 }
 .message_box{
     display: flex;

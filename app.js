@@ -1,25 +1,29 @@
-const express = require('express');
-const http = require('http');
-const { Server } = require('socket.io');
+require("dotenv").config();
+const express = require("express");
+const http = require("http");
+const { Server } = require("socket.io");
+const connectDB = require("./config/db");
+const setupSockets = require("./sokets/soket");
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server);
+const io = new Server(server, {
+  cors: {
+    origin: "*"
+  }
+});
 
-app.use(express.static('public'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
 
-io.on('connection', (socket) => {
-   console.log("Користувач під'єднався");
+connectDB();
 
-   socket.on('chat message', (msg) => {
-      io.emit('chat message', msg);
-   })
+const authRoutes = require("./routes/routes");
+app.use("/api/auth", authRoutes);
 
-   socket.on('disconnect', () => {
-      console.log("Користувач від'єднався");
-   })
-})
+setupSockets(io);
 
 server.listen(3000, () => {
-   console.log("Sever is running on localhost:3000");
-})
+  console.log("Server is running on http://localhost:3000");
+});
