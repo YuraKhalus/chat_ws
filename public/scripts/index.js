@@ -5,7 +5,7 @@ const socket = io();
 const userData = {
     id: Math.floor(Math.random() * 1000),
     username: null, //зробив пустим юзернейм
-    password: null, // добавив пароль
+    //password: null, // добавив пароль
     avatar: null, // добавив фото
 };
 
@@ -28,12 +28,12 @@ document.body.style.overflow = "hidden";
 userForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     userData.username = userNameInput.value ? userNameInput.value : "Aнонім"; //тут юзернейм заповнюю
-    userData.password = password.value;
+    //userData.password = password.value;
 
     const user = {
         //id: userData.id,
         login: userData.username,
-        password: userData.password,
+        password: password.value,
         avatar: userData.avatar,
     };
     try {
