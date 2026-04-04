@@ -1,3 +1,11 @@
+
+
+const headerDots = document.querySelector(".header_dots");
+const clearModal = document.querySelector("#clearModal");
+const confirmClear = document.querySelector("#confirmClear");
+const cancelClear = document.querySelector("#cancelClear");
+
+
 const socket = io();
 
 const userData = {
@@ -60,5 +68,29 @@ function addClass() {
     }
   });
 }
+/*Функція для видалення повідомлення всього чату*/
+
+
+
+headerDots.addEventListener("click", () => {
+  clearModal.style.display = "flex";
+});
+
+
+cancelClear.addEventListener("click", () => {
+  clearModal.style.display = "none";
+});
+
+
+confirmClear.addEventListener("click", () => {
+  socket.emit("clear chat");         
+  clearModal.style.display = "none";
+});
+
+
+socket.on("chat cleared", () => {
+  document.querySelector(".main__container").innerHTML = "";
+});
+
 
 export default socket;

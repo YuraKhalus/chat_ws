@@ -61,5 +61,14 @@ module.exports = (io) => {
       console.log("Користувач від'єднався");
       io.emit("chat disconnection", { activeUsers_num, userName: socket.login });
     });
+        socket.on("clear chat", async () => {
+      try {
+        await Chat.deleteMany({});
+        io.emit("chat cleared");
+      } catch (err) {
+        console.error("Помилка очищення чату:", err);
+      }
+    });
   });
 };
+
