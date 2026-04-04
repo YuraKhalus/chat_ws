@@ -6,7 +6,7 @@
     align-items: center;
     flex-direction: column;
     width: 100%;
-    border: 1px solid #7e7e7e;
+    border: none;
     height: 90vh;
     padding: 5px 16px;
     overflow: auto;
