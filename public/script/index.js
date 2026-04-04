@@ -92,7 +92,7 @@ modal_backgrounds.addEventListener('click', () => {
           </div>
           <button id="success_background" type="submit">Підтвердити</button>
         </form>
-        <button id="delete_background">Удалити фон</button>
+        <button id="delete_background">Удалити ваш фон</button>
       </div>
   `
   const backgrounds = document.querySelectorAll('.background');
@@ -113,27 +113,34 @@ modal_backgrounds.addEventListener('click', () => {
   uploadForm.addEventListener('submit', (event) => {
     event.preventDefault()
     const img = new FormData(uploadForm).get('file')
-    const type_image = ['image/png', 'image/jpeg']
-    for (let i = 0; i < type_image.length; i++) {
-      if (img.type == type_image[i]) {
-        break
+  
+    if (img.size) {
+      const type_image = ['image/png', 'image/jpeg']
+      for (let i = 0; i < type_image.length; i++) {
+        if (img.type == type_image[i]) {
+          break
+        }
+        if (type_image.length-1 == i) {
+          alert('вибрайте png або jpeg')
+          return
+        }
       }
-      if (type_image.length-1 == i) {
-        alert('вибрайте png або jpeg')
-        return
-      }
-    }
 
-    const reader = new FileReader();
-    
-    reader.onload = (e) => {
-      const base64 = e.target.result
-      wrap.style.background = `url(${base64}) no-repeat center / cover`
-      localStorage.setItem('userImageBackground', base64);
-    };
-    reader.readAsDataURL(img)
-    upload_img.src = '../img/upload.png'
-    document.querySelector('.upload').style.cssText = `height: ''; padding: ''`
+      const reader = new FileReader();
+      
+      reader.onload = (e) => {
+        const base64 = e.target.result
+        wrap.style.background = `url(${base64}) no-repeat center / cover`
+        for (let i = 1; i < 7; i++) {
+            wrap.classList.remove('background' + i)
+        }
+        localStorage.setItem('userImageBackground', base64);
+      };
+      reader.readAsDataURL(img)
+      upload_img.src = '../img/upload.png'
+      document.querySelector('.upload').style.cssText = `height: ''; padding: ''`
+    }
+   
   })
 
   const delete_background = document.querySelector('#delete_background');
@@ -145,7 +152,7 @@ modal_backgrounds.addEventListener('click', () => {
   const input_file = document.querySelector('.input_file');
   input_file.addEventListener('change', () => {
     const file = input_file.files[0]
-    if (file) {
+    if (file.size) {
       const type_image = ['image/png', 'image/jpeg']
       for (let i = 0; i < type_image.length; i++) {
         if (file.type == type_image[i]) {
