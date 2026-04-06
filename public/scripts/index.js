@@ -1,5 +1,11 @@
 import convertImg from "../utils/convert.js";
 
+const wrap = document.querySelector('.wrap');
+
+if (localStorage.getItem('userImageBackground')) {
+    wrap.style.background = `url(${localStorage.getItem('userImageBackground')}) no-repeat center / cover`
+}
+
 const socket = io();
 
 const userData = {
@@ -152,5 +158,147 @@ function addClass() {
         }
     });
 }
+
+
+const modal_background = document.querySelectorAll('.modal')[2];
+
+const modal_content = document.querySelectorAll('.modal_content')[2];
+
+const closeModal = document.querySelector('#closeModal');
+console.log(closeModal);
+
+closeModal.addEventListener('click', () => {
+  modal_background.classList.remove('active')
+})
+
+const modal_backgrounds_btn = document.querySelector('.modal_backgrounds');
+const modal_title = document.querySelectorAll('.modal_title')[2];
+const modal_text = document.querySelectorAll('.modal_text')[2];
+modal_backgrounds_btn.addEventListener('click', () => {
+  modal_background.classList.add('active')
+  
+  modal_title.textContent = 'Змінити фон'
+  modal_text.textContent = 'Ви можете вибрати фон які вже готолі або ваш'
+  modal_content.innerHTML = `
+     <div class="modal_backgrounds">
+        <div class="ready_made_backgrounds">
+          <div class="background" data-background="background1"></div>
+          <div class="background background2" data-background="background2"></div>
+          <div class="background background3" data-background="background3"></div>
+          <div class="background background4" data-background="background4"></div>
+          <div class="background background5" data-background="background5"></div>
+          <div class="background background6" data-background="background6"></div>
+        </div>
+        <p>Або</p>
+        <p>Ваш фон</p>
+        <form action="" class="uploadForm">
+          <div class="upload">
+            <input type="file" class="input_file" name="file">
+            <img src="./img/upload.png" alt="" class="upload_img">
+          </div>
+          <button id="success_background" type="submit">Підтвердити</button>
+        </form>
+        <button id="delete_background">Удалити ваш фон</button>
+      </div>
+  `
+  
+  const backgrounds = document.querySelectorAll('.background');
+  backgrounds.forEach(b => {
+      b.addEventListener('click', () => {
+        wrap.style.background = ''
+          for (let i = 1; i < 7; i++) {
+              wrap.classList.remove('background' + i)
+          }
+          wrap.classList.add(b.getAttribute('data-background'))
+      })
+  })
+
+  const uploadForm = document.querySelector('.uploadForm');
+  const upload_img = document.querySelector('.upload_img');
+
+  
+  uploadForm.addEventListener('submit', async (event) => {
+    event.preventDefault()
+    const img = new FormData(uploadForm).get('file')
+
+    if (img.size) {
+        const type_image = ['image/png', 'image/jpeg']
+        for (let i = 0; i < type_image.length; i++) {
+            if (img.type == type_image[i]) break
+
+
+            if (type_image.length-1 == i) {
+                alert('вибрайте png або jpeg')
+                return
+            }
+        }
+
+        const base64 = await convertImg(img, 1000, 1000, 0.9)
+        
+        wrap.style.background = `url(${base64}) no-repeat center / cover`
+        for (let i = 1; i < 7; i++) {
+            wrap.classList.remove('background' + i)
+        }
+        localStorage.setItem('userImageBackground', base64);
+        upload_img.src = '../img/upload.png'
+        document.querySelector('.upload').style.cssText = `height: ''; padding: ''` 
+    }
+  })
+
+  const delete_background = document.querySelector('#delete_background');
+  delete_background.addEventListener('click', () => {
+    localStorage.removeItem('userImageBackground')
+    wrap.style.background = ''
+    alert('фон успішно удалено')
+  })
+  const input_file = document.querySelector('.input_file');
+  input_file.addEventListener('change', () => {
+    const file = input_file.files[0]
+    if (file.size) {
+      const type_image = ['image/png', 'image/jpeg']
+      for (let i = 0; i < type_image.length; i++) {
+        if (file.type == type_image[i]) {
+          break
+        }
+        if (type_image.length-1 == i) {
+          alert('вибрайте png або jpeg')
+          return
+        }
+      }
+      const url = URL.createObjectURL(file)
+      document.querySelector('.upload').style.cssText = 'height: max-content; padding: 10px 0'
+      upload_img.onload = () => {
+        URL.revokeObjectURL(url);
+      };
+
+      upload_img.src = url;
+    }
+
+  })
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export default socket;

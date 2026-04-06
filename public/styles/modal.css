@@ -75,10 +75,13 @@
 }
 
 .ready_made_backgrounds{
-  display: flex;
+  /* display: flex; */
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  grid-template-rows: repeat(2, max-content);
   justify-content: space-around;
   align-items: center;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   gap: 30px;
 }
 .ready_made_backgrounds div{
@@ -106,7 +109,6 @@
   color: #000;
 }
 
-<<<<<<< HEAD
 #success_background{
   background-color: #00000000;
   padding: 3px;
@@ -182,7 +184,6 @@ input[type='file'] {
 .background6{
     background: linear-gradient(140deg,#fff 0%,#C0EFA3 50%, #fff 100%) !important; 
 }
-=======
 .avatar {
   display: flex;
   justify-content: center;
@@ -305,4 +306,30 @@ input[type='file'] {
   color: #b55ac7;
   transition: ease 0.3s;
 }
->>>>>>> beta-images-converting/Maksym
+
+
+
+
+@media screen and (max-width: 580px) {
+  .backgrounds_container {
+    max-width: 73%;
+  }
+  .ready_made_backgrounds{
+    gap: 20px;
+  }
+  .ready_made_backgrounds div{
+    width: 70px;
+    height: 70px;
+  }
+}
+@media screen and (max-width: 425px) {
+  .backgrounds_container {
+    max-width: 85%;
+  }
+}
+@media screen and (max-width: 375px) {
+  .ready_made_backgrounds div{
+    width: 55px;
+    height: 55px;
+  }
+}

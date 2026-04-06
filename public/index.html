@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BETA v0.1 Чат на WebSocket</title>
+  <title>BETA v0.2 Чат на WebSocket</title>
   <link rel="stylesheet" href="./styles/style.css" />
   <link rel="stylesheet" href="./styles/header.css" />
   <link rel="stylesheet" href="./styles/main.css" />
@@ -32,6 +32,9 @@
           </div>
           <div class="header_dots">
             <img src="./img/dots.png" alt="" />
+            <ul>
+              <li class="modal_backgrounds">Змінити фон</li>
+            </ul>
           </div>
         </div>
       </header>
@@ -47,7 +50,6 @@
 
       <!-- Chat input -->
       <div class="chat-input-box">
-        <div class="top-line"></div>
         <form id="form">
           <div class="chat-input">
             <button type="button" class="icon-btn">
@@ -104,7 +106,13 @@
     </div>
   </div>
 
-  <div class="modal active registration" id="modal"> <!--active-->
+
+
+
+
+
+
+  <div class="modal registration" id="modal"> <!--active-->
     <!-- тут є клас active, він відповідає за показ вікна, треба добавити логіку що до його присвоєня модальному вікну щоб воно показалось-->
 
     <div class="modal_container">
@@ -184,14 +192,24 @@
           <button class="submit" type="submit">Login</button>
         </form>
 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+      </div>
+    </div>
+  </div>
 
-    <script type="module" src="/socket.io/socket.io.js"></script>
-    <script type="module" src="./scripts/index.js"></script>
-    <script type="module" src="./scripts/header.js"></script>
-  </body>
-</html>
+  <div class="modal">
+      <div class="modal_container backgrounds_container">
+        <span class="modal_close" id="closeModal">&times;</span>
+        <div class="modal_header">
+          <h2 class="modal_title">Modal Title</h2>
+          <p class="modal_text">some small text</p>
+        </div>
+        <div class="modal_content">
+        </div>
+      </div>
+    </div>
 
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script type="module" src="./scripts/sendBtn.js"></script>
   <script type="module" src="/socket.io/socket.io.js"></script>
   <script type="module" src="./scripts/index.js"></script>
