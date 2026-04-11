@@ -54,6 +54,7 @@ module.exports = (io) => {
                     id: msg.id,
                     username: saved.login,
                     message: saved.message,
+                    avatar: msg.avatar,
                     data: saved.time,
                 });
             } catch (err) {

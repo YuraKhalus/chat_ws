@@ -25,6 +25,8 @@ const avatar_img = document.querySelector(".avatar_img_show");
 
 document.body.style.overflow = "hidden";
 
+let userId = null;
+
 userForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     userData.username = userNameInput.value ? userNameInput.value : "Aнонім"; //тут юзернейм заповнюю
@@ -39,6 +41,9 @@ userForm.addEventListener("submit", async (e) => {
     try {
         const response = await axios.post("/api/auth/register", user); // роблю запит
         console.log(response);
+
+        const userId = response.data.user.id; //отримую айді
+        userData.avatar = `/api/auth/users/${userId}/avatar`;
 
         socket.emit("user joined", userData.username);
         document.body.style.overflow = "";
@@ -84,6 +89,10 @@ userForm_login.addEventListener("submit", async (e) => {
     try {
         const response = await axios.post("/api/auth/login", user); // роблю запит
         console.log(response);
+
+        const userId = response.data.user.id; //отримую айді
+        userData.avatar = `/api/auth/users/${userId}/avatar`;
+
         socket.emit("user joined", userData.username);
         document.body.style.overflow = "";
         modal_login.classList.remove("active");
@@ -114,6 +123,7 @@ form.addEventListener("submit", (e) => {
         const minutes = String(now.getMinutes()).padStart(2, "0");
         socket.emit("chat message", {
             ...userData,
+            //avatar: `/api/auth/users/${userId}/avatar`,
             data: hours + ":" + minutes,
             message: text,
         });
@@ -142,10 +152,12 @@ async function renderMessage(msg) {
     //     console.log(err);
     // }
 
-    const avatarUrl = `/api/auth/users/69d11a9514eaf378487c8ee7/avatar`;
+    //const avatarUrl = `/api/auth/users/${userId}/avatar`;
+
+    console.log(msg);
 
     li.innerHTML = `
-    <img src="${avatarUrl}" alt="" style="align-self: ${msg.message.split(" ").length > 10 ? "start" : "center"};">
+    <img src="${msg.avatar}" alt="" style="align-self: ${msg.message.split(" ").length > 10 ? "start" : "center"};">
     <div class="box_text">
       <p class="name">${msg.username}</p>
       <p class="text">${msg.message}</p>
