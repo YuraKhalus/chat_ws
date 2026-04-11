@@ -125,14 +125,27 @@ socket.on("chat message", (msg) => {
     renderMessage(msg);
 });
 
-function renderMessage(msg) {
+async function renderMessage(msg) {
     const li = document.createElement("li");
     li.classList.add("message_box");
     if (msg.id != null) {
         li.setAttribute("data-id", msg.id);
     }
+
+    // try {
+    //     const response = await axios.get(
+    //         `/api/auth/users/69d11a9514eaf378487c8ee7/avatar`,
+    //     );
+    //     msg.avatar = response.data;
+    //     console.log(msg.avatar);
+    // } catch (err) {
+    //     console.log(err);
+    // }
+
+    const avatarUrl = `/api/auth/users/69d11a9514eaf378487c8ee7/avatar`;
+
     li.innerHTML = `
-    <img src="./img/man.jpg" alt="" style="align-self: ${msg.message.split(" ").length > 10 ? "start" : "center"};">
+    <img src="${avatarUrl}" alt="" style="align-self: ${msg.message.split(" ").length > 10 ? "start" : "center"};">
     <div class="box_text">
       <p class="name">${msg.username}</p>
       <p class="text">${msg.message}</p>

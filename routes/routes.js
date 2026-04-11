@@ -38,7 +38,7 @@ router.post("/login", async (req, res) => {
 
 router.get("/users/:userId/avatar", async (req, res) => {
     try {
-        const user = User.findById(req.params.userId);
+        const user = await User.findById(req.params.userId);
 
         if (!user || !user.avatar) {
             return res.status(400).send("Not found");
