@@ -5,7 +5,6 @@ const socket = io();
 const userData = {
     id: Math.floor(Math.random() * 1000),
     username: null, //зробив пустим юзернейм
-    //password: null, // добавив пароль
     avatar: null, // добавив фото
 };
 
@@ -30,10 +29,8 @@ let userId = null;
 userForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     userData.username = userNameInput.value ? userNameInput.value : "Aнонім"; //тут юзернейм заповнюю
-    //userData.password = password.value;
 
     const user = {
-        //id: userData.id,
         login: userData.username,
         password: password.value,
         avatar: userData.avatar,
@@ -80,9 +77,7 @@ userForm_login.addEventListener("submit", async (e) => {
     userData.username = userNameInput_login.value
         ? userNameInput_login.value
         : "Aнонім"; //тут юзернейм заповнюю
-    //userData.password = password_login.value;
     const user = {
-        //id: userData.id,
         login: userData.username,
         password: password_login.value,
     };
@@ -123,7 +118,6 @@ form.addEventListener("submit", (e) => {
         const minutes = String(now.getMinutes()).padStart(2, "0");
         socket.emit("chat message", {
             ...userData,
-            //avatar: `/api/auth/users/${userId}/avatar`,
             data: hours + ":" + minutes,
             message: text,
         });
@@ -141,18 +135,6 @@ async function renderMessage(msg) {
     if (msg.id != null) {
         li.setAttribute("data-id", msg.id);
     }
-
-    // try {
-    //     const response = await axios.get(
-    //         `/api/auth/users/69d11a9514eaf378487c8ee7/avatar`,
-    //     );
-    //     msg.avatar = response.data;
-    //     console.log(msg.avatar);
-    // } catch (err) {
-    //     console.log(err);
-    // }
-
-    //const avatarUrl = `/api/auth/users/${userId}/avatar`;
 
     console.log(msg);
 
