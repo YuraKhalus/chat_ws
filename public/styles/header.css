@@ -76,6 +76,24 @@
   backdrop-filter: blur(4px);
   display: inline-block;
 }
+
+.header_dots{
+  position: relative;
+}
+.header_dots ul{
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  list-style: none;
+  width: max-content;
+  right: 0;
+}
+.header_dots ul li{
+  cursor: pointer;
+}
+.header_dots:hover ul{
+  display: block;
+}
 .addedUser:first-child{
   margin-top: 75px;
 }
